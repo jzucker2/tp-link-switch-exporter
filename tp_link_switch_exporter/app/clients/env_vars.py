@@ -2,6 +2,7 @@ import os
 
 
 SWITCH_IP = os.environ.get('TP_LINK_SWITCH_IP')
+SWITCH_PORT = int(os.environ.get('TP_LINK_SWITCH_PORT', 80))
 SWITCH_NAME = os.environ.get('TP_LINK_SWITCH_NAME', 'default')
 SWITCH_USERNAME = os.environ.get('TP_LINK_SWITCH_USERNAME', 'admin')
 SWITCH_PASSWORD = os.environ.get('TP_LINK_SWITCH_PASSWORD')
@@ -11,6 +12,10 @@ class EnvVars(object):
     @classmethod
     def get_default_switch_ip(cls):
         return SWITCH_IP
+
+    @classmethod
+    def get_default_switch_port(cls):
+        return SWITCH_PORT
 
     @classmethod
     def get_default_switch_name(cls):
