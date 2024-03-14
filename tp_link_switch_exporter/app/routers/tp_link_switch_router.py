@@ -1,6 +1,5 @@
 from flask import current_app as app
 from ..clients.tp_link_switch import TPLinkSwitch
-# from ..clients.tp_link_router import TPLinkRouter
 from ..metrics import Metrics
 from .router import Router, RouterException
 
