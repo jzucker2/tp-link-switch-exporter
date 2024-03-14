@@ -150,14 +150,16 @@ class TPLinkSwitch(object):
                                  timeout=5)
             log.debug("Received stats:" + r.text)
 
-            # we're looking for something like this in the output:
-            # state:[1,1,1,0,1,1,1,1,0,0],
-            # link_status:[6,5,6,0,0,0,6,6,0,0],
-            # pkts:[156660032,0,73463961,0,36934785,0,18955572,0,224590711,0,67687216,0,54497978,0,29301491,0,0,0,0,0,0,0,0,0,32241294,0,25417373,0,209448595,0,462006278,0,0,0]
+            """
+            we're looking for something like this in the output:
+            state:[1,1,1,0,1,1,1,1,0,0],
+            link_status:[6,5,6,0,0,0,6,6,0,0],
+            pkts:[156660032,0,73463961,0,36934785,0,18955572,0,224590711,0,67687216,0,54497978,0,29301491,0,0,0,0,0,0,0,0,0,32241294,0,25417373,0,209448595,0,462006278,0,0,0]
 
-            # state: 1 - Enabled, 0 - Disabled (administratively)
-            # link_status: 0 - down, 1 - auto, 2 - 10Mbps half, 3 - 10Mbps full, 4 - 100Mbps half, 5 - 100Mbps full, 6 - 1Gbps full
-            # pkts: every group of 4 values represent txGoodPkt, txBadPkt, rxGoodPkt, rxBadPkt
+            state: 1 - Enabled, 0 - Disabled (administratively)
+            link_status: 0 - down, 1 - auto, 2 - 10Mbps half, 3 - 10Mbps full, 4 - 100Mbps half, 5 - 100Mbps full, 6 - 1Gbps full
+            pkts: every group of 4 values represent txGoodPkt, txBadPkt, rxGoodPkt, rxBadPkt
+            """
 
             stateMatch = re.search(r'state:\[([0-9,]+)\]', r.text)
             numberOfPorts = 0
