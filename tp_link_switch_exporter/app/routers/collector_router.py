@@ -35,9 +35,10 @@ class CollectorRouter(Router):
         return self._collectors
 
     @classmethod
-    def _create_collector(cls, ip, name, username, password):
+    def _create_collector(cls, ip, port, name, username, password):
         return Collector.get_collector(
             switch_ip=ip,
+            switch_port=port,
             switch_username=username,
             switch_password=password,
             switch_name=name)
@@ -46,10 +47,12 @@ class CollectorRouter(Router):
     def _create_env_var_collector(cls):
         switch_name = EnvVars.get_default_switch_name()
         switch_ip = EnvVars.get_default_switch_ip()
+        switch_port = EnvVars.get_default_switch_port()
         switch_username = EnvVars.get_default_switch_username()
         switch_password = EnvVars.get_default_switch_password()
         return cls._create_collector(
             switch_ip,
+            switch_port,
             switch_name,
             switch_username,
             switch_password)
@@ -58,10 +61,12 @@ class CollectorRouter(Router):
     def _create_collector_from_config(cls, switch_config):
         switch_name = switch_config[ConfigKeys.SWITCH_NAME.key_name]
         switch_ip = switch_config[ConfigKeys.SWITCH_IP.key_name]
+        switch_port = switch_config[ConfigKeys.SWITCH_PORT.key_name]
         switch_username = switch_config[ConfigKeys.SWITCH_USERNAME.key_name]
         switch_password = switch_config[ConfigKeys.SWITCH_PASSWORD.key_name]
         collector = cls._create_collector(
             switch_ip,
+            switch_port,
             switch_name,
             switch_username,
             switch_password)
