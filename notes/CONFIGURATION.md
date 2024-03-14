@@ -7,7 +7,7 @@
 ```
     ...
     environment:
-      # like `http://10.0.1.1`
+      # like `10.0.1.1`
       - TP_LINK_SWITCH_IP=${TP_LINK_SWITCH_IP}
       # this you can make up to be whatever you want, like `Living Room Switch`
       - TP_LINK_SWITCH_NAME=${TP_LINK_SWITCH_NAME}
@@ -21,13 +21,13 @@
 ```yaml
 switches:
   - switch_name: Living Room Switch
-    switch_ip: http://10.0.1.1
+    switch_ip: 10.0.1.1
     switch_port: 80
     switch_username: admin
     switch_password: foo
 
   - switch_name: Kitchen Switch
-    switch_ip: http://10.0.1.2
+    switch_ip: 10.0.1.2
     switch_port: 80
     switch_username: admin
     switch_password: bar

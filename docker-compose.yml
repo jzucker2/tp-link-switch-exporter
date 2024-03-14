@@ -22,7 +22,7 @@ services:
       - "3233:3233"
       - "9333:9333"
     environment:
-      # like `http://10.0.1.1`
+      # like `10.0.1.1`
       - TP_LINK_SWITCH_IP=${TP_LINK_SWITCH_IP}
       # this you can make up to be whatever you want, like `Living Room Switch`
       - TP_LINK_SWITCH_NAME=${TP_LINK_SWITCH_NAME}
