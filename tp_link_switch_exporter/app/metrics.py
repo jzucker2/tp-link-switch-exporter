@@ -6,7 +6,7 @@ from prometheus_flask_exporter import Counter, Summary, Gauge
 class Labels(Enum):
     DEVICE = 'device'
     SCRAPE_EVENT = 'scrape_event'
-    ROUTER_NAME = 'router_name'
+    SWITCH_NAME = 'switch_name'
 
     @classmethod
     def labels(cls):
@@ -15,15 +15,15 @@ class Labels(Enum):
         ])
 
     @classmethod
-    def basic_router_labels(cls):
+    def basic_switch_labels(cls):
         return list([
-            cls.ROUTER_NAME.value,
+            cls.SWITCH_NAME.value,
         ])
 
     @classmethod
     def scrape_event_labels(cls):
         return list([
-            cls.ROUTER_NAME.value,
+            cls.SWITCH_NAME.value,
             cls.SCRAPE_EVENT.value,
         ])
 
@@ -38,12 +38,12 @@ class Metrics(object):
         'Exceptions while attempting to handle debug route request')
 
     TP_LINK_SWITCH_TEST_TIME = Summary(
-        'tp_link_switch_exporter_router_test_time',
-        'Time spent to get quick info from TP-Link router')
+        'tp_link_switch_exporter_switch_test_time',
+        'Time spent to get quick info from TP-Link switch')
 
     TP_LINK_SWITCH_TEST_EXCEPTIONS = Counter(
-        'tp_link_switch_exporter_router_test_exceptions',
-        'Exceptions while attempting to get quick info from TP-Link router')
+        'tp_link_switch_exporter_switch_test_exceptions',
+        'Exceptions while attempting to get quick info from TP-Link switch')
 
     SIMPLE_COLLECTOR_ROUTE_TIME = Summary(
         'tp_link_switch_exporter_simple_collector_route_time',
@@ -63,36 +63,36 @@ class Metrics(object):
 
     ROUTER_SCRAPE_EVENT_COLLECTOR_COUNTER = Counter(
         'tp_link_switch_exporter_scrape_event_collector_count',
-        'The count of events related to scraping a router by collector',
+        'The count of events related to scraping a switch by collector',
         Labels.scrape_event_labels()
     )
 
-    # router specific stats
+    # switch specific stats
 
     ROUTER_WIFI_CLIENTS_TOTAL = Gauge(
-        'tp_link_switch_exporter_router_wifi_clients_total',
-        'Total number of Wi-Fi clients connected to this router',
-        Labels.basic_router_labels())
+        'tp_link_switch_exporter_switch_wifi_clients_total',
+        'Total number of Wi-Fi clients connected to this switch',
+        Labels.basic_switch_labels())
 
     ROUTER_WIRED_CLIENTS_TOTAL = Gauge(
-        'tp_link_switch_exporter_router_wired_clients_total',
-        'Total number of wired clients connected to this router',
-        Labels.basic_router_labels())
+        'tp_link_switch_exporter_switch_wired_clients_total',
+        'Total number of wired clients connected to this switch',
+        Labels.basic_switch_labels())
 
     ROUTER_CLIENTS_TOTAL = Gauge(
-        'tp_link_switch_exporter_router_clients_total',
-        'Total number of total clients connected to this router',
-        Labels.basic_router_labels())
+        'tp_link_switch_exporter_switch_clients_total',
+        'Total number of total clients connected to this switch',
+        Labels.basic_switch_labels())
 
     ROUTER_MEMORY_USAGE = Gauge(
-        'tp_link_switch_exporter_router_memory_usage',
-        'The memory usage of the router',
-        Labels.basic_router_labels())
+        'tp_link_switch_exporter_switch_memory_usage',
+        'The memory usage of the switch',
+        Labels.basic_switch_labels())
 
     ROUTER_CPU_USAGE = Gauge(
-        'tp_link_switch_exporter_router_cpu_usage',
-        'The cpu usage of the router',
-        Labels.basic_router_labels())
+        'tp_link_switch_exporter_switch_cpu_usage',
+        'The cpu usage of the switch',
+        Labels.basic_switch_labels())
 
 
 # https://github.com/rycus86/prometheus_flask_exporter#app-factory-pattern
