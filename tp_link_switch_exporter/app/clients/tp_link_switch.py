@@ -148,7 +148,8 @@ class TPLinkSwitch(object):
             r = self.session.get(self._get_stats_url(),
                                  headers=headers,
                                  timeout=5)
-            log.debug("Received stats:" + r.text)
+            r_m = f"Received stats: {r.text}"
+            log.info(r_m)
 
             """
             we're looking for something like this in the output:
