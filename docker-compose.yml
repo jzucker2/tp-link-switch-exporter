@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+
+  tp_link_switch_exporter:
+    container_name: tp_link_switch_exporter
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://host.docker.internal:3233/api/v1/health || exit 1" ]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 80s
+#    volumes:
+#      - ./exporter_config.yaml:/etc/tp_link_switch_exporter/exporter_config.yaml
+    ports:
+      - "3233:3233"
+      - "9333:9333"
+    environment:
+      # like `10.0.1.1`
+      - TP_LINK_SWITCH_IP=${TP_LINK_SWITCH_IP}
+      # this you can make up to be whatever you want, like `Living Room Switch`
+      - TP_LINK_SWITCH_NAME=${TP_LINK_SWITCH_NAME}
+      - TP_LINK_SWITCH_USERNAME=${TP_LINK_SWITCH_USERNAME}
+      # hopefully something secret!
+      - TP_LINK_SWITCH_PASSWORD=${TP_LINK_SWITCH_PASSWORD}
+    stdin_open: true
+    tty: true
