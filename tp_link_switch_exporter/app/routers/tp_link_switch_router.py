@@ -27,6 +27,7 @@ class TPLinkSwitchRouter(Router):
             p_m = 'test for switch'
             log.debug(p_m)
             final_response = self.base_response('test_switch')
-            # result = self.router_client.get_firmware()
-            # log.debug(f'result: {result}')
+            self.switch_client.login()
+            stats = self.switch_client.get_stats()
+            log.info(f'stats: {stats}')
             return final_response

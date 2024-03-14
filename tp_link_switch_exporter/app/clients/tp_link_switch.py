@@ -159,7 +159,7 @@ class TPLinkSwitch(object):
             state: 1 - Enabled, 0 - Disabled (administratively)
             link_status: 0 - down, 1 - auto, 2 - 10Mbps half, 3 - 10Mbps full, 4 - 100Mbps half, 5 - 100Mbps full, 6 - 1Gbps full
             pkts: every group of 4 values represent txGoodPkt, txBadPkt, rxGoodPkt, rxBadPkt
-            """
+            """  # noqa: E501
 
             stateMatch = re.search(r'state:\[([0-9,]+)\]', r.text)
             numberOfPorts = 0

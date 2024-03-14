@@ -26,6 +26,7 @@ class DebugRouter(Router):
             p_m = 'handle debug route'
             log.debug(p_m)
             final_response = self.base_response('debug')
+            self.switch_client.login()
             stats = self.switch_client.get_stats()
             log.info(f'stats: {stats}')
             return final_response
