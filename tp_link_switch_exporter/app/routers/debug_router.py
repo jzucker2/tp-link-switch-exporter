@@ -1,5 +1,6 @@
 from flask import current_app as app
-from ..clients.tp_link_router import TPLinkRouter
+from ..clients.tp_link_switch import TPLinkSwitch
+# from ..clients.tp_link_router import TPLinkRouter
 from ..metrics import Metrics
 from .router import Router, RouterException
 
@@ -14,7 +15,7 @@ class DebugRouterException(RouterException):
 class DebugRouter(Router):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.router_client = TPLinkRouter.get_client()
+        self.switch_client = TPLinkSwitch.get_client()
 
     @property
     def service(self):
@@ -26,6 +27,6 @@ class DebugRouter(Router):
             p_m = 'handle debug route'
             log.debug(p_m)
             final_response = self.base_response('debug')
-            result = self.router_client.get_firmware()
-            log.debug(f'result: {result}')
+            # result = self.router_client.get_firmware()
+            # log.debug(f'result: {result}')
             return final_response
