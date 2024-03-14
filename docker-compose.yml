@@ -21,12 +21,13 @@ services:
     ports:
       - "3233:3233"
       - "9333:9333"
-#    environment:
-#      # like `http://10.0.1.1`
-#      - TP_LINK_SWITCH_IP=${TP_LINK_SWITCH_IP}
-#      # this you can make up to be whatever you want, like `Living Room Switch`
-#      - TP_LINK_SWITCH_NAME=${TP_LINK_SWITCH_NAME}
-#      # hopefully something secret!
-#      - TP_LINK_SWITCH_PASSWORD=${TP_LINK_SWITCH_PASSWORD}
+    environment:
+      # like `http://10.0.1.1`
+      - TP_LINK_SWITCH_IP=${TP_LINK_SWITCH_IP}
+      # this you can make up to be whatever you want, like `Living Room Switch`
+      - TP_LINK_SWITCH_NAME=${TP_LINK_SWITCH_NAME}
+      - TP_LINK_SWITCH_USERNAME=${TP_LINK_SWITCH_USERNAME}
+      # hopefully something secret!
+      - TP_LINK_SWITCH_PASSWORD=${TP_LINK_SWITCH_PASSWORD}
     stdin_open: true
     tty: true
