@@ -116,7 +116,8 @@ class TPLinkSwitch(object):
             self.loggedin = False
             return False
         except requests.exceptions.RequestException as err:
-            e_m = f"Error on login for {self.switch_username}@{self.switch_ip}: {err}"
+            e_m = (f"Error on login for "
+                   f"{self.switch_username}@{self.switch_ip}: {err}")
             log.error(e_m)
             self.loggedin = False
             return False
@@ -127,7 +128,7 @@ class TPLinkSwitch(object):
     def _get_stats_headers(self):
         return dict({
             'Referer': f"{self.base_url}/",
-            'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",  # noqa: E501
             'Upgrade-Insecure-Requests': "1",
         })
 
