@@ -35,5 +35,5 @@ class ConfigParser(object):
         return config
 
     @classmethod
-    def get_routers(cls, config):
+    def get_switches(cls, config):
         return config[ConfigKeys.ROUTERS.key_name]

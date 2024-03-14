@@ -18,9 +18,9 @@ def create_app(config=config.base_config):
         app.logger.debug(f'!!!!!!!!!!! Set log_level: {log_level}')
 
         # Check to possibly include our Tasks
-        from .tasks.tp_link_router_pinger import TPLinkRouterPinger
-        if TPLinkRouterPinger.should_schedule_router_metrics_updates():
-            from .tasks import tp_link_router_tasks  # noqa: F401
+        from .tasks.tp_link_switch_pinger import TPLinkSwitchPinger
+        if TPLinkSwitchPinger.should_schedule_switch_metrics_updates():
+            from .tasks import tp_link_switch_tasks  # noqa: F401
         else:
             s_m = 'Skipping scheduling of TP-Link Router metrics updates'
             app.logger.warning(s_m)
@@ -30,12 +30,12 @@ def create_app(config=config.base_config):
         @app.route("/")
         def hello_world():
             # FIXME: replace with a constant
-            return "<p>Welcome to TP-Link Router Exporter!</p>"
+            return "<p>Welcome to TP-Link Switch Exporter!</p>"
 
         # Include our Routes
         from .routes import utils  # noqa: F401
         from .routes import debug  # noqa: F401
-        from .routes import tp_link_router  # noqa: F401
+        from .routes import tp_link_switch  # noqa: F401
         from .routes import collector  # noqa: F401
 
         # after routes, register metrics
@@ -50,8 +50,6 @@ def register_extensions(app):
     # scheduler
     scheduler.init_app(app)
     scheduler.start()
-    # TODO: do we need the below??
-    # db.create_all()
 
 
 def register_metrics(app):

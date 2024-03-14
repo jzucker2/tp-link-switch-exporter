@@ -2,10 +2,10 @@ from enum import Enum
 
 
 class ConfigKeys(Enum):
-    ROUTERS = 'routers'
-    ROUTER_NAME = 'router_name'
-    ROUTER_IP = 'router_ip'
-    ROUTER_PASSWORD = 'router_password'
+    SWITCHES = 'switches'
+    SWITCH_NAME = 'switch_name'
+    SWITCH_IP = 'switch_ip'
+    SWITCH_PASSWORD = 'switch_password'
 
     @property
     def key_name(self):
