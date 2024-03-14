@@ -15,7 +15,7 @@ log = app.logger
     max_instances=1,
     start_date="2000-01-01 12:19:00",
 )
-def perform_router_metrics_update():
+def perform_switch_metrics_update():
     """Switch metrics update
 
     Added when app starts.
