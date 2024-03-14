@@ -163,8 +163,8 @@ class TPLinkSwitch(object):
             numberOfPorts = 0
             if stateMatch:
                 state = stateMatch.group(1).split(",")
-                ### Note - that the last two entries in the json data do not correspond to physical ports,
-                ### so we'll skip them here...
+                # Note - that the last two entries in the json data do not
+                # correspond to physical ports, so we'll skip them here...
                 state = state[:-2]
                 # populate the stats dictionary
                 for p in range(1, len(state) + 1):
@@ -181,19 +181,22 @@ class TPLinkSwitch(object):
             linkStatusMatch = re.search(r'link_status:\[([0-9,]+)\]', r.text)
             if linkStatusMatch:
                 state = linkStatusMatch.group(1).split(",")
-                ### Note - that the last two entries in the json data do not correspond to physical ports,
-                ### so we'll skip them here...
+                # Note - that the last two entries in the json data
+                # do not correspond to physical ports, so we'll
+                # skip them here...
                 state = state[:-2]
                 # populate the stats dictionary
                 for p in range(1, len(state) + 1):
                     p = str(p)
-                    stats[p]['link_status'] = self.getPortStateMapping(state[int(p) - 1])
+                    port_state = state[int(p) - 1]
+                    stats[p]['link_status'] = self.getPortStateMapping(
+                        port_state)
 
             pktsMatch = re.search(r'pkts:\[([0-9,]+)\]', r.text)
             if pktsMatch:
                 pktData = pktsMatch.group(1).split(",")
-                ### Note - that the last two entries in the json data do not correspond to physical ports,
-                ### so we'll skip them here...
+                # Note - that the last two entries in the json data do not
+                # correspond to physical ports, so we'll skip them here...
                 pktData = pktData[:-2]
 
                 # data in the array has 4 measurements for each port, in order
