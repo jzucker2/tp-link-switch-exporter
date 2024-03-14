@@ -3,7 +3,7 @@ import os
 
 SWITCH_IP = os.environ.get('TP_LINK_SWITCH_IP')
 SWITCH_NAME = os.environ.get('TP_LINK_SWITCH_NAME', 'default')
-SWITCH_USERNAME = os.environ.get('TP_LINK_SWITCH_USERNAME')
+SWITCH_USERNAME = os.environ.get('TP_LINK_SWITCH_USERNAME', 'admin')
 SWITCH_PASSWORD = os.environ.get('TP_LINK_SWITCH_PASSWORD')
 
 

@@ -16,16 +16,16 @@ log = app.logger
     start_date="2000-01-01 12:19:00",
 )
 def perform_router_metrics_update():
-    """Router metrics update
+    """Switch metrics update
 
     Added when app starts.
     """
-    pu_m = "running tp_link_router_metrics_update!"
+    pu_m = "running tp_link_switch_metrics_update!"
     log.debug(pu_m)
 
     with scheduler.app.app_context():
         router = CollectorRouter()
         response = router.handle_collector_metrics_update_route_response()
-        r_m = (f'scheduled tp link router metrics '
+        r_m = (f'scheduled tp link switch metrics '
                f'update got response: {response}')
         log.debug(r_m)

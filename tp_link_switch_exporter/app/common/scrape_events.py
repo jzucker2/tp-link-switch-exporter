@@ -2,6 +2,7 @@ from enum import Enum
 
 
 class ScrapeEvents(Enum):
+    # FIXME: this needs to be updated to be relevant again
     AUTHORIZE = 'authorize'
     LOGOUT = 'logout'
     GET_FIRMWARE = 'get_firmware'

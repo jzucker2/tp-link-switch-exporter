@@ -48,6 +48,7 @@ class TPLinkSwitch(object):
 
     @property
     def switch(self):
+        # FIXME: this needs to be actually implemented
         # if not self._switch:
         #     switch = self._switch
         # # self._switch = Tplinkswitch(
