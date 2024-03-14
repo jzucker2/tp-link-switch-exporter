@@ -22,11 +22,13 @@
 switches:
   - switch_name: Living Room Switch
     switch_ip: http://10.0.1.1
+    switch_port: 80
     switch_username: admin
     switch_password: foo
 
   - switch_name: Kitchen Switch
     switch_ip: http://10.0.1.2
+    switch_port: 80
     switch_username: admin
     switch_password: bar
 ```
