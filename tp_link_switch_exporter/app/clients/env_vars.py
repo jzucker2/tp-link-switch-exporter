@@ -15,7 +15,7 @@ class EnvVars(object):
 
     @classmethod
     def get_default_switch_port(cls):
-        return SWITCH_PORT
+        return int(SWITCH_PORT)
 
     @classmethod
     def get_default_switch_name(cls):

@@ -25,7 +25,7 @@ class TPLinkSwitch(object):
 
     @classmethod
     def get_default_switch_port(cls):
-        return EnvVars.get_default_switch_port()
+        return int(EnvVars.get_default_switch_port())
 
     @classmethod
     def get_default_switch_username(cls):
@@ -53,7 +53,7 @@ class TPLinkSwitch(object):
             self.get_default_switch_password())
         self.switch_password = switch_password
         i_m = (f'creating client for switch_ip: {switch_ip}')
-        log.debug(i_m)
+        log.info(i_m)
         self.base_url = f"http://{self.switch_ip}:{self.switch_port}"
         self._switch = None
         self.loggedin = False
@@ -106,7 +106,8 @@ class TPLinkSwitch(object):
                                   data=data,
                                   headers=headers,
                                   timeout=5)
-            log.debug("Logged in:" + r.text)
+            l_m = f"Logged in: {r.text}"
+            log.info(l_m)
             self.loggedin = True
             return True
         except requests.exceptions.Timeout as errt:
